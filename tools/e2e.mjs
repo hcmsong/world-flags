@@ -109,7 +109,7 @@ function assert(label, cond) {
 // ── 테스트 본문 ──────────────────────────────────────────────────────────
 let chrome;
 try {
-  await startServer();
+  if (/^http:\/\/(localhost|127\.0\.0\.1)[:/]/.test(BASE_URL)) await startServer();
   chrome = await connectChrome();
   await cdpSend('Page.enable');
   await cdpSend('Network.enable');
